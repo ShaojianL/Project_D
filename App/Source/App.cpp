@@ -3,4 +3,8 @@
 int main()
 {
 	Core::PrintHelloWorld();
+	Core::DemonstrateAVLTree();
+	
+	std::cout << "\nPress Enter to exit...";
+	std::cin.get();
 }
