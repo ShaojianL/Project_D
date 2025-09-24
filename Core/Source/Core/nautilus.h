@@ -55,4 +55,27 @@ namespace  Core {
         bool accept_bzx = true; // Protein: allow B Z X as ambiguous
         AmbiguityMode ambiguity_mode = AmbiguityMode::Break;
     };
+
+    /**
+     * CLI options
+     */
+
+    struct Options {
+        std::vector<std::filesystem::path> fasta_inputs;    // --fasta-input (file/folder; multiple ok)
+        std::optional<std::filesystem::path> list_input;    // --list-input (CSV, one path per row)
+
+        // Core parameters
+        std::size_t kmer_size = 0;                          // -s / --size
+        std::filesystem::path output_path;                  // -o / --output
+
+        // Filters (whole-number)
+        int lower_filter_pct = 0;                           // -l / --lower-filter [default: 0]
+        int upper_filter_pct = 100;                         // -u / --upper-filter [default: 100]
+
+        // Output
+        OutputFormat format = OutputFormat::Parquet;        // -f / --format [default: parquet]
+
+        // Alphabet (runtime selectable; default Protein; wire to a flag if you want)
+        AlphabetOptions alph_opt{}; // init to default values as specified in the struct
+    };
 }
