@@ -6,6 +6,7 @@ project "Core"
    staticruntime "off"
 
    files { "Source/**.h", "Source/**.cpp" }
+   removefiles { "Source/Core/AVLTree.cpp" }
 
    includedirs
    {

@@ -1,42 +1,43 @@
 #pragma once
-
-#include <iostream>
-#include <algorithm>
+#include<iostream>
+#include<algorithm>
 
 namespace Core {
 
-    template<typename Key, typename Value>
-    class AVLTree {
+    template<typename Key, typename Value> class AVLTree {
     private:
-        struct Node {
+        struct Node
+        {
+            /* data */
             Key key;
             Value value;
             Node* left;
             Node* right;
             int height;
+            // Initialization list
+            Node(Key k, Value v) : key(k), value(v), left(nullptr), right(nullptr) {}
 
-            Node(Key k, Value v) : key(k), value(v), left(nullptr), right(nullptr), height(1) {}
         };
 
         Node* root;
-
-        // Helper functions - declarations only
+        
+        
         int getHeight(Node* node);
         int getBalance(Node* node);
         void updateHeight(Node* node);
-
-        // Rotation functions - declarations only
-        Node* rotateRight(Node* y);
-        Node* rotateLeft(Node* x);
-
-        // Recursive helper functions - declarations only
+        
+        // Recursive helper
         Node* insertHelper(Node* node, Key key, Value value);
         Node* searchHelper(Node* node, Key key);
         void inorderHelper(Node* node);
         void clearHelper(Node* node);
 
-    public:
-        // Constructor and Destructor
+        // Rotation
+        Node* rotateRight(Node* node);
+        Node* rotateLeft(Node* node);
+
+        public:
+        // constructor and destructor
         AVLTree();
         ~AVLTree();
 
@@ -44,7 +45,7 @@ namespace Core {
         AVLTree(const AVLTree& other);
         AVLTree& operator=(const AVLTree& other);
 
-        // Public interface
+        // API
         void insert(Key key, Value value);
         bool search(Key key, Value& value);
         bool contains(Key key);
@@ -52,9 +53,9 @@ namespace Core {
         int getHeight();
         void clear();
         bool empty() const;
+        
     };
-
 } // namespace Core
 
-// Include the implementation
-#include "AVLTree.cpp"
+// Include the implementation cpp
+#include"AVLTree.cpp"

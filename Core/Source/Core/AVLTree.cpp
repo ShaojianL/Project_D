@@ -1,6 +1,6 @@
 // AVLTree.cpp - Template implementation file
 // This file contains the implementation of AVLTree template methods
-
+#pragma once
 #include "AVLTree.h"
 
 namespace Core {
